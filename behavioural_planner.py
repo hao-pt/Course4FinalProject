@@ -97,6 +97,7 @@ class BehaviouralPlanner:
             # First, find the closest index to the ego vehicle.
             # TODO: INSERT YOUR CODE BETWEEN THE DASHED LINES
             # ------------------------------------------------------------------
+            print("FOLLOW_LANE")
             closest_len, closest_index = get_closest_index(waypoints, ego_state)
             # ------------------------------------------------------------------
 
@@ -104,7 +105,7 @@ class BehaviouralPlanner:
             # along the waypoints.
             # TODO: INSERT YOUR CODE BETWEEN THE DASHED LINES
             # ------------------------------------------------------------------
-            goal_index = self.get_goal_index(waypoints, ego_state, closest_index)
+            goal_index = self.get_goal_index(waypoints, ego_state, closest_len, closest_index)
             # ------------------------------------------------------------------
 
             # Finally, check the index set between closest_index and goal_index
@@ -134,6 +135,7 @@ class BehaviouralPlanner:
         elif self._state == DECELERATE_TO_STOP:
             # TODO: INSERT YOUR CODE BETWEEN THE DASHED LINES
             # ------------------------------------------------------------------
+            print("DECELERATE_TO_STOP")
             if closed_loop_speed > STOP_THRESHOLD:
                 self._state = DECELERATE_TO_STOP
                 print(f"closed_loop_speed: {closed_loop_speed}")
@@ -158,7 +160,7 @@ class BehaviouralPlanner:
                 # TODO: INSERT YOUR CODE BETWEEN THE DASHED LINES
                 # --------------------------------------------------------------
                 closest_len, closest_index = get_closest_index(waypoints, ego_state)
-                goal_index = self.get_goal_index(waypoints, ego_state, closest_index)
+                goal_index = self.get_goal_index(waypoints, ego_state, closest_len, closest_index)
                 # --------------------------------------------------------------
 
                 # We've stopped for the required amount of time, so the new goal 
@@ -450,8 +452,8 @@ def get_closest_index(waypoints, ego_state):
     # ------------------------------------------------------------------
     for i in range(len(waypoints)):
         distance = math.sqrt((waypoints[i][0]-ego_state[0])**2 \
-                        +(waypoints[i][1]-ego_state[1])**2)
-        if distance < closest_len:
+                        + (waypoints[i][1]-ego_state[1])**2)
+        if distance <= closest_len:
             closest_len = distance
             closest_index = i
     # ------------------------------------------------------------------

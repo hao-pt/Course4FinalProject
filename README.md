@@ -273,17 +273,3 @@ Discussions {.rc-ForumsTabBody__title}
     2 Replies
 
 [](https://www.coursera.org/learn/motion-planning-self-driving-cars/discussions/forums/HTre__RIEei9qgqM89SsXg)
-
-External Link
-
-View all discussions
-
-### Confirm Navigation
-
-Are you sure you want to leave this page?
-
-Stay on this Page
-
-  
-
-Leave this Page

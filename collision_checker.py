@@ -164,8 +164,8 @@ class CollisionChecker:
                 # A lower score implies a more suitable path.
                 # TODO: INSERT YOUR CODE BETWEEN THE DASHED LINES
                 # --------------------------------------------------------------
-                score = np.sqrt((goal_state[0]-paths[i][0][len(paths[i][0]-1)])**2 \
-                    + (goal_state[1]-paths[i][1][len(paths[i][1]-1)])**2) 
+                score = np.sqrt((goal_state[0]-paths[i][0][len(paths[i][0])-1])**2 \
+                    + (goal_state[1]-paths[i][1][len(paths[i][0])-1])**2) 
                 # --------------------------------------------------------------
 
                 # Compute the "proximity to other colliding paths" score and

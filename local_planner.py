@@ -119,7 +119,7 @@ class LocalPlanner:
         # TODO: INSERT YOUR CODE BETWEEN THE DASHED LINES
         # ------------------------------------------------------------------
         goal_x = goal_state_local[0]*np.cos(ego_state[2]) + goal_state_local[1]*np.sin(ego_state[2])
-        goal_y = goal_state_local[0]*np.sin(ego_state[2]) + goal_state_local[1]*np.cos(ego_state[2])
+        goal_y = goal_state_local[0]*-np.sin(ego_state[2]) + goal_state_local[1]*np.cos(ego_state[2])
         # ------------------------------------------------------------------
 
         # Compute the goal yaw in the local frame by subtracting off the 
@@ -153,8 +153,8 @@ class LocalPlanner:
             # and sin(goal_theta + pi/2), respectively.
             # TODO: INSERT YOUR CODE BETWEEN THE DASHED LINES
             # ------------------------------------------------------------------
-            x_offset = x_offset * np.cos(goal_t+pi/2)
-            y_offset = y_offset * np.sin(goal_t+pi/2)
+            x_offset = offset * np.cos(goal_t+pi/2)
+            y_offset = offset * np.sin(goal_t+pi/2)
             # ------------------------------------------------------------------
 
             goal_state_set.append([goal_x + x_offset, 
